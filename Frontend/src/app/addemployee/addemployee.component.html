@@ -1,0 +1,61 @@
+<app-header></app-header>
+ <div class="form-body">
+    <div class="row">
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3>Add Employee Details</h3>
+                    <p>Fill in the data below.</p>
+                    <form class="requires-validation" novalidate>
+
+                        <div class="col-md-12">
+                           <input class="form-control" type="text" [(ngModel)] ="employee.name" name="name" placeholder="First Name" required
+                           >
+                           <div class="valid-feedback">Firstname field is valid!</div>
+                           <div class="invalid-feedback">Firstname field cannot be blank!</div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <input class="form-control" type="text"  [(ngModel)] ="employee.lastName" name="lastName" placeholder="Last Name" required
+                           >
+                            <div class="valid-feedback">Lastname field is valid!</div>
+                            <div class="invalid-feedback">Lastname field cannot be blank!</div>
+                         </div>
+
+                        <div class="col-md-12">
+                            <input class="form-control" type="email" [(ngModel)] ="employee.email" name="email" placeholder="E-mail Address" required
+                            >
+                             <div class="valid-feedback">Email field is valid!</div>
+                             <div class="invalid-feedback">Email field cannot be blank!</div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <input  class="form-control" type="text" [(ngModel)] ="employee.contactNo" name="contactNo" placeholder="ContactNo" required
+                            >
+                         </div>
+
+                         <div class="col-md-12">
+                            <input class="form-control" type="text"  [(ngModel)] ="employee.department" name="department" placeholder="Department" required
+                           >
+                            <div class="valid-feedback">Department field is valid!</div>
+                            <div class="invalid-feedback">Department field cannot be blank!</div>
+                         </div>
+                         <div class="col-md-12">
+                            <input class="form-control" type="text"  [(ngModel)] ="employee.gender" name="gender" placeholder="Gender" required
+                           >
+                            <div class="valid-feedback">Gender field is valid!</div>
+                            <div class="invalid-feedback">Gender field cannot be blank!</div>
+                         </div>
+                         <br>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button (click)="onSubmit()" class="btn btn-primary me-md-2" type="button">Add</button>
+                            <button id="cancel" routerLink="/home" routerLinkActive="active" class="btn btn-primary" type="button">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
