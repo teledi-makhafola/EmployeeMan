@@ -14,6 +14,7 @@ import { LandingComponent } from './landing/landing.component';
 import { ModalComponent } from './modal/modal.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { DeleteemployeeComponent } from './deleteemployee/deleteemployee.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     ViewemployeeComponent,
     LandingComponent,
     ModalComponent,
+    DeleteemployeeComponent,
   
   ],
   imports: [

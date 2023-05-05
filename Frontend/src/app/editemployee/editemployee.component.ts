@@ -3,6 +3,8 @@ import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
 import { ActivatedRoute,Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-editemployee',
@@ -27,7 +29,7 @@ export class EditemployeeComponent implements OnInit {
     email!:string|undefined;
     contactNo!:string|undefined;
     department!:string|undefined;
-    gender!:string;
+    gender!:string|undefined;
 
   constructor(private employeeService: EmployeeService,
     private route: ActivatedRoute,
@@ -38,8 +40,6 @@ export class EditemployeeComponent implements OnInit {
    // this.id = this.route.snapshot.params['id'];
     this.getIemp()
    // this.id = this.route.snapshot.params['id'];
-   
-   
   }
     
 onSubmit(){
@@ -71,9 +71,14 @@ getIemp(){
       this.email=data.email;
       this.contactNo=data.contactNo;
       this.department=data.department;
+      this.gender=data.gender;
     }, error => console.log(error));
 }
 goToEmployeeList(){
   this.router.navigate(['/employees']);
+}
+
+alertWithSuccess(){
+  Swal.fire('Thank you...', 'You submitted succesfully!', 'success')
 }
 }

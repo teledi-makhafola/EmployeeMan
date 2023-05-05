@@ -1,4 +1,5 @@
 <app-header></app-header>
+    
  <div class="form-body">
     <div class="row">
         <div class="form-holder">
@@ -48,8 +49,8 @@
                          </div>
                          <br>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button (click)="onSubmit()" class="btn btn-primary me-md-2" type="button">Add</button>
-                            <button id="cancel" routerLink="/home" routerLinkActive="active" class="btn btn-primary" type="button">Cancel</button>
+                            <button (click)="onSubmit()" (click)="simpleAlert()" class="btn btn-primary me-md-2" type="button">Add</button>
+                            <button id="cancel" routerLink="/home" routerLinkActive="active" class="btn btn-primary" type="button">Back</button>
                         </div>
                     </form>
                 </div>

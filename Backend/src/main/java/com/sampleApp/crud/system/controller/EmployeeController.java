@@ -20,9 +20,9 @@ import com.sampleApp.crud.system.models.Employee;
 import com.sampleApp.crud.system.repo.EmployeeRepo;
 
 @RestController
-@RequestMapping(value = "/employees")
+@RequestMapping(value = "/employees") // Routes for controllers also knowns as API endpoints
 
-public class EmployeeController {
+public class EmployeeController {  // Controller forEmployeesController
     @Autowired 
     EmployeeRepo employeerepo;
 
