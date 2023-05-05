@@ -1,6 +1,7 @@
 <app-header></app-header>
   <br>
-  <a routerLink="/add-employee" routerLinkActive="active" class="btn btn-primary" style="float:right">Add Employee</a>
+  <button routerLink="/add-employee" routerLinkActive="active" class="btn btn-primary" style="float:right">Add Employee</button>
+  &nbsp;<br>
 <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -10,7 +11,6 @@
         <th scope="col">Email</th>
         <th scope="col">Department</th>
         <th scope="col">Contact Number</th>
-        <th scope="col">Gender</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -22,7 +22,6 @@
         <td>{{employee.email}}</td>
         <td>{{employee.department}}</td>
         <td>{{employee.contactNo}}</td>
-        <td>{{employee.gender}}</td>
         <td><a routerLink="/edit-employee" (click)="getId(employee.id)" routerLinkActive="active" class="btn btn-primary">Edit</a>|
           <a (click)="viewEmployee(employee.id)" routerLinkActive="active" class="btn btn-primary">View</a>|
           <button (click)="deleteEmployeeById(employee.id)" type="button" class="btn btn-danger">Delete</button></td>

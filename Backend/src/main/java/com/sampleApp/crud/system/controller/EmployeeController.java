@@ -47,7 +47,6 @@ public class EmployeeController {  // Controller forEmployeesController
         updateEmployee.setEmail(employeeDetails.getEmail());
         updateEmployee.setDepartment(employeeDetails.getDepartment());
         updateEmployee.setContactNo(employeeDetails.getContactNo());
-        updateEmployee.setGender(employeeDetails.getGender());
 
         employeerepo.save(updateEmployee);
 

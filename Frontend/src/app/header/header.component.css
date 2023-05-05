@@ -1,3 +1,14 @@
 .logo{
     height: 50px;
 } 
+
+.heading{
+    text-align: center;
+    float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: larger;
+}

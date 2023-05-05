@@ -1,62 +1,134 @@
 <app-header></app-header>
-    
- <div class="form-body">
-    <div class="row">
-        <div class="form-holder">
-            <div class="form-content">
-                <div class="form-items">
-                    <h3>Add Employee Details</h3>
-                    <p>Fill in the data below.</p>
-                    <form class="requires-validation" novalidate>
 
-                        <div class="col-md-12">
-                           <input class="form-control" type="text" [(ngModel)] ="employee.name" name="name" placeholder="First Name" required
-                           >
-                           <div class="valid-feedback">Firstname field is valid!</div>
-                           <div class="invalid-feedback">Firstname field cannot be blank!</div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <input class="form-control" type="text"  [(ngModel)] ="employee.lastName" name="lastName" placeholder="Last Name" required
-                           >
-                            <div class="valid-feedback">Lastname field is valid!</div>
-                            <div class="invalid-feedback">Lastname field cannot be blank!</div>
-                         </div>
-
-                        <div class="col-md-12">
-                            <input class="form-control" type="email" [(ngModel)] ="employee.email" name="email" placeholder="E-mail Address" required
-                            >
-                             <div class="valid-feedback">Email field is valid!</div>
-                             <div class="invalid-feedback">Email field cannot be blank!</div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <input  class="form-control" type="text" [(ngModel)] ="employee.contactNo" name="contactNo" placeholder="ContactNo" required
-                            >
-                         </div>
-
-                         <div class="col-md-12">
-                            <input class="form-control" type="text"  [(ngModel)] ="employee.department" name="department" placeholder="Department" required
-                           >
-                            <div class="valid-feedback">Department field is valid!</div>
-                            <div class="invalid-feedback">Department field cannot be blank!</div>
-                         </div>
-                         <div class="col-md-12">
-                            <input class="form-control" type="text"  [(ngModel)] ="employee.gender" name="gender" placeholder="Gender" required
-                           >
-                            <div class="valid-feedback">Gender field is valid!</div>
-                            <div class="invalid-feedback">Gender field cannot be blank!</div>
-                         </div>
-                         <br>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button (click)="onSubmit()" (click)="simpleAlert()" class="btn btn-primary me-md-2" type="button">Add</button>
-                            <button id="cancel" routerLink="/home" routerLinkActive="active" class="btn btn-primary" type="button">Back</button>
-                        </div>
-                    </form>
-                </div>
+<div class="form-body">
+  <div class="row">
+    <div class="form-holder">
+      <div class="form-content">
+        <div class="form-items">
+          <h3>Add Employee Details</h3>
+          <p>Fill in the data below.</p>
+          <form [formGroup]="form" class="requires-validation" novalidate>
+            <div class="col-md-12">
+              <input
+                class="form-control"
+                formControlName="name"
+                type="text"
+                [(ngModel)]="employee.name"
+                [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+                name="name"
+                placeholder="First Name"
+                required
+              />
+              <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                <div *ngIf="f['name'].errors['required']">Name is required</div>
+              </div>
             </div>
+            <div class="col-md-12">
+              <input
+                class="form-control"
+                formControlName="lastName"
+                type="text"
+                [(ngModel)]="employee.lastName"
+                [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }"
+                name="lastName"
+                placeholder="Last Name"
+                required
+              />
+              <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+                <div *ngIf="f['lastName'].errors['required']">Lastname is required</div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <input
+                class="form-control"
+                formControlName="email"
+                type="email"
+                [(ngModel)]="employee.email"
+                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+                name="email"
+                placeholder="E-mail Address"
+                required
+              />
+              <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <input
+                class="form-control"
+                formControlName="contactNo"
+                type="number"
+                [(ngModel)]="employee.contactNo"
+                [ngClass]="{ 'is-invalid': submitted && f['contactNo'].errors }"
+                name="contactNo"
+                placeholder="ContactNo"
+                required
+              />
+              <span class="text-danger"*ngIf="submitted  f[contactNo].touched  && f[contactNo].hasError('required')">
+              
+              </span>
+              <span class="text-danger"*ngIf="submitted f[contactNo].touched   && f[contactNo].hasError('pattern')">
+              Contact Number requires 10 digits
+              </span>
+              <!-- <div *ngIf="submitted && f['contactNo'].errors" class="invalid-feedback">
+                <div *ngIf="f['contactNo'].errors['required']">Contact Number is required</div>
+
+                <div *ngIf="f['contactNo'].errors['minlength']">
+                  Contact Number must be 10 digits
+                </div>
+
+                <div *ngIf="f['contactNo'].errors['maxlength']">
+                    Contact Number must be 10 digits
+                </div>
+              </div> -->
+            </div> 
+
+              
+            <div class="col-md-12">
+              <input
+                class="form-control"
+                formControlName="department"
+                type="text"
+                [(ngModel)]="employee.department"
+                [ngClass]="{ 'is-invalid': submitted && f['department'].errors }"
+                name="department"
+                placeholder="Department"
+                required
+              />
+              <div *ngIf="submitted && f['department'].errors" class="invalid-feedback">
+                <div *ngIf="f['department'].errors['required']">Department is required</div>
+              </div>
+             
+            </div>
+            <br />
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button
+                (click)="onSubmit()"
+                class="btn btn-primary me-md-2"
+                type="button"
+              >
+                Add
+              </button>
+              <button
+                id="cancel"
+                routerLink="/home"
+                routerLinkActive="active"
+                class="btn btn-primary"
+                type="button"
+              >
+                Back
+              </button>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <app-footer></app-footer>
+
+<!-- (click)="simpleAlert()" -->

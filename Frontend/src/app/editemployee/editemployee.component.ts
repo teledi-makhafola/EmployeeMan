@@ -2,7 +2,7 @@ import { Component ,OnInit} from '@angular/core';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
 import { ActivatedRoute,Router } from '@angular/router';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 
@@ -16,13 +16,14 @@ export class EditemployeeComponent implements OnInit {
   employee: Employee = new Employee();
 
   editForm = new FormGroup({
-    name: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
-    contactNo: new FormControl(''),
-    department: new FormControl(''),
-    gender: new FormControl('')
+    name: new FormControl('',Validators.required),
+    lastName: new FormControl('',Validators.required),
+    email: new FormControl('',Validators.required),
+    contactNo: new FormControl('',Validators.required),
+    department: new FormControl('',Validators.required),
   });
+
+  submitted = false;
 
     name:string|undefined;
     lastName!:string|undefined;
@@ -33,13 +34,32 @@ export class EditemployeeComponent implements OnInit {
 
   constructor(private employeeService: EmployeeService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,private formBuilder: FormBuilder) { }
     
   ngOnInit() {
     this.id = localStorage.getItem("id");
    // this.id = this.route.snapshot.params['id'];
     this.getIemp()
    // this.id = this.route.snapshot.params['id'];
+   this.editForm = this.formBuilder.group(
+    {
+      name: ['', [Validators.required]],
+      lastName: ['',[Validators.required,]],
+      email: ['', [Validators.required, Validators.email]],
+      department: ['', [Validators.required, Validators.email]],
+      contactNo: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern("^((\+91-?)|0)?[0-9]{10}$"),
+          Validators.maxLength(10),
+        ]
+      ],
+    },
+  );
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.editForm.controls;
   }
     
 onSubmit(){
@@ -54,14 +74,21 @@ onSubmit(){
     // this.goToEmployeeList();
   }
   , error => console.log(error));
+  this.submitted = true;
+    if (this.editForm.invalid) {
+      return;
+  }
+  console.log(JSON.stringify(this.editForm.value, null, 2));
+}
+
+onReset(): void {
+  this.submitted = false;
+  this.editForm.reset();
 }
 
 getIemp(){
-  //this.id=202;
   this.id = this.route.snapshot.params['id'];
-  //this.id = localStorage.getItem("id");
     console.log(this.id)
-    //console.log(this.empId)
     this.employeeService.getEmployeeById(this.id).subscribe(data => {
       console.log(data)
       this.employee = data;
@@ -78,7 +105,7 @@ goToEmployeeList(){
   this.router.navigate(['/employees']);
 }
 
-alertWithSuccess(){
-  Swal.fire('Thank you...', 'You submitted succesfully!', 'success')
-}
+// alertWithSuccess(){
+//   Swal.fire('Thank you...', 'You submitted successfully!', 'success')
+// }
 }

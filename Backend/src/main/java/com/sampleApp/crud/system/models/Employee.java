@@ -1,13 +1,18 @@
 package com.sampleApp.crud.system.models;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "employees")
+
 public class Employee {
    private int id;
    private String name;
@@ -15,25 +20,26 @@ public class Employee {
    private String email;
    private String department;
    private String contact_No;
-   private String gender;
+
+   
 
    public Employee() {
    }
 
-   public Employee(int id, String name, String last_Name, String email, String department,String contact_No, String gender) {
+   public Employee(int id, String name, String last_Name, String email, String department,String contact_No) {
     this.id = id;
     this.name = name;
     this.last_Name = last_Name;
     this.email = email;
     this.department = department;
     this.contact_No = contact_No;
-    this.gender = gender;
    }
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
    public int getId() {
     return id;
    }
+
    public void setId(int id) {
     this.id = id;
    }
@@ -66,13 +72,5 @@ public class Employee {
    }
    public void setContactNo(String contact_No){
     this.contact_No = contact_No;
-   }
-
-   public String getGender(){
-      return gender;
-   }
-
-   public void setGender(String gender){
-      this.gender = gender;
    }
 }
