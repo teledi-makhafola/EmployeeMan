@@ -5,7 +5,6 @@ import { ActivatedRoute,Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-editemployee',
   templateUrl: './editemployee.component.html',
@@ -51,7 +50,7 @@ export class EditemployeeComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern("^((\+91-?)|0)?[0-9]{10}$"),
+          Validators.pattern(/^[0-9]{10}$/),
           Validators.maxLength(10),
         ]
       ],

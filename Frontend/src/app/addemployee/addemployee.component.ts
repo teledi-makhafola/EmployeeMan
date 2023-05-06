@@ -44,7 +44,7 @@ export class AddemployeeComponent implements OnInit {
           '',
           [
             Validators.required,
-            Validators.pattern("^((\+91-?)|0)?[0-9]{10}$"),
+            Validators.pattern(/^[0-9]{10}$/),
             Validators.maxLength(10),
           ]
         ],

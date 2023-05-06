@@ -1,14 +1,10 @@
 package com.sampleApp.crud.system.models;
 
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "employees")
@@ -20,9 +16,6 @@ public class Employee {
    private String email;
    private String department;
    private String contact_No;
-
-   
-
    public Employee() {
    }
 

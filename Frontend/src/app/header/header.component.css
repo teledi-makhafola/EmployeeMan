@@ -1,5 +1,5 @@
 .logo{
-    height: 50px;
+    height: 70px;
 } 
 
 .heading{
@@ -10,5 +10,5 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-weight: bold;
-  font-size: larger;
+  font-size: 30px;
 }
