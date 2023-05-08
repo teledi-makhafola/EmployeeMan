@@ -39,13 +39,13 @@ export class AddemployeeComponent implements OnInit {
         name: ['', [Validators.required]],
         lastName: ['',[Validators.required,]],
         email: ['', [Validators.required, Validators.email]],
-        department: ['', [Validators.required, Validators.email]],
+        department: [''],
         contactNo: [
           '',
           [
             Validators.required,
             Validators.pattern(/^[0-9]{10}$/),
-            Validators.maxLength(10),
+             Validators.maxLength(10),
           ]
         ],
       },
@@ -72,8 +72,11 @@ export class AddemployeeComponent implements OnInit {
     console.log(this.employee);
     this.saveEmployee();
     this.submitted = true;
-    if (this.form.invalid) {
-      return;
+    if (this.form.valid) {
+      alert("Employee Successfully added!");
+  } else  if (this.form.invalid) {
+    alert("Invalid fields!!!")
+    
   }
   console.log(JSON.stringify(this.form.value, null, 2));
 }
@@ -82,7 +85,7 @@ onReset(): void {
   this.form.reset();
 }
 
-  // simpleAlert() {
-  //   Swal.fire('Successfully Added!');
-  // }
+  simpleAlert() {
+    Swal.fire('Successfully Added!');
+   }
 }

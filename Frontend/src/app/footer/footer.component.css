@@ -4,5 +4,6 @@ footer {
     background-color: #abbaba;
     color: #000;
     margin-top: 35rem;
+    position: sticky;
     
 }

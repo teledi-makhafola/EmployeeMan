@@ -35,6 +35,8 @@ export class HomeComponent implements OnInit {
     // localStorage.setItem("id",Id)
     this.router.navigate(['/delete-employee/' + id]);
    }
+
+   
   
   
 }

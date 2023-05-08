@@ -82,7 +82,10 @@
                 placeholder="First Name"
                 required
               />
-              <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+              <div
+                *ngIf="submitted && f['name'].errors"
+                class="invalid-feedback"
+              >
                 <div *ngIf="f['name'].errors['required']">Name is required</div>
               </div>
             </div>
@@ -97,8 +100,13 @@
                 placeholder="Last Name"
                 required
               />
-              <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
-                <div *ngIf="f['lastName'].errors['required']">Lastname is required</div>
+              <div
+                *ngIf="submitted && f['lastName'].errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['lastName'].errors['required']">
+                  Lastname is required
+                </div>
               </div>
             </div>
 
@@ -113,8 +121,13 @@
                 placeholder="E-mail Address"
                 required
               />
-              <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-                <div *ngIf="f['email'].errors['required']">Email is required</div>
+              <div
+                *ngIf="submitted && f['email'].errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['email'].errors['required']">
+                  Email is required
+                </div>
                 <div *ngIf="f['email'].errors['email']">Email is invalid</div>
               </div>
             </div>
@@ -123,7 +136,7 @@
               <input
                 class="form-control"
                 formControlName="contactNo"
-                type="number"
+                type="text"
                 [(ngModel)]="employee.contactNo"
                 [ngClass]="{ 'is-invalid': submitted && f['contactNo'].errors }"
                 name="contactNo"
@@ -136,35 +149,42 @@
               <span class="text-danger"*ngIf="submitted f[contactNo].touched   && f[contactNo].hasError('pattern')">
               Contact Number requires 10 digits
               </span> -->
-              <div *ngIf="submitted && f['contactNo'].errors" class="invalid-feedback">
-                <div *ngIf="f['contactNo'].errors['required']">Contact Number is required</div>
-
+              <div
+                *ngIf="submitted && f['contactNo'].errors"
+                class="invalid-feedback"
+              >
+                <!-- <div *ngIf="f['contactNo'].errors['required']">
+                  Contact Number is required
+                </div> -->
                 <div *ngIf="f['contactNo'].errors['minlength']">
                   Contact Number must be 10 digits
                 </div>
-
                 <div *ngIf="f['contactNo'].errors['maxlength']">
-                    Contact Number must be 10 digits
+                  Contact Number must be 10 digits
                 </div>
               </div>
-            </div> 
-
-              
+            </div>
             <div class="col-md-12">
               <input
                 class="form-control"
                 formControlName="department"
                 type="text"
                 [(ngModel)]="employee.department"
-                [ngClass]="{ 'is-invalid': submitted && f['department'].errors }"
+                [ngClass]="{
+                  'is-invalid': submitted && f['department'].errors
+                }"
                 name="department"
                 placeholder="Department"
                 required
               />
-              <div *ngIf="submitted && f['department'].errors" class="invalid-feedback">
-                <div *ngIf="f['department'].errors['required']">Department is required</div>
+              <div
+                *ngIf="submitted && f['department'].errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f['department'].errors['required']">
+                  Department is required
+                </div>
               </div>
-             
             </div>
             <br />
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -173,7 +193,7 @@
                 class="btn btn-primary me-md-2"
                 type="button"
               >
-                Edit
+                Save
               </button>
               <button
                 id="cancel"
@@ -191,7 +211,4 @@
     </div>
   </div>
 </div>
-
 <app-footer></app-footer>
-
-<!-- (click)="simpleAlert()" -->

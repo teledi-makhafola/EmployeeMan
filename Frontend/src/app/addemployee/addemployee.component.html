@@ -60,20 +60,20 @@
               <input
                 class="form-control"
                 formControlName="contactNo"
-                type="number"
+                type="text"
                 [(ngModel)]="employee.contactNo"
                 [ngClass]="{ 'is-invalid': submitted && f['contactNo'].errors }"
                 name="contactNo"
                 placeholder="Contact Number"
                 required
               />
-              <span class="text-danger"*ngIf="submitted  f[contactNo].touched  && f[contactNo].hasError('required')">
+             <!-- <span class="text-danger"*ngIf="submitted  f[contactNo].touched  && f[contactNo].hasError('required')">
               
               </span>
               <span class="text-danger"*ngIf="submitted f[contactNo].touched   && f[contactNo].hasError('pattern')">
               Contact Number requires 10 digits
-              </span>
-              <!-- <div *ngIf="submitted && f['contactNo'].errors" class="invalid-feedback">
+              </span> -->
+              <div *ngIf="submitted && f['contactNo'].errors" class="invalid-feedback">
                 <div *ngIf="f['contactNo'].errors['required']">Contact Number is required</div>
 
                 <div *ngIf="f['contactNo'].errors['minlength']">
@@ -83,7 +83,7 @@
                 <div *ngIf="f['contactNo'].errors['maxlength']">
                     Contact Number must be 10 digits
                 </div>
-              </div> -->
+              </div>
             </div> 
 
               
